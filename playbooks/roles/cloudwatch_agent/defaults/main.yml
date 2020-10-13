@@ -280,7 +280,7 @@ aws_cwa_edxapp_logs_list:
 
 aws_cwa_cms_edx_log:
   file_path: "{{ aws_cwa_edx_log_path }}/cms/edx.log"
-  log_stream_name: "{{ aws_cwa_edx_log_path }}/cms/edx.log"
+  log_stream_name: "local_hostname}.{ip_address}--{{ aws_cwa_edx_log_path }}/cms/edx.log2"
   log_group_name: "{{ aws_cwa_common_version }}.{{ aws_cwa_common_env }}.applogs.edxapp"
   timezone: "{{ aws_cwa_timezone }}"
 
