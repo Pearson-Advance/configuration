@@ -25,6 +25,7 @@
     --authenticationDatabase admin
     -u admin -p '{{ MONGO_ADMIN_PASSWORD }}'
     -o {{ MONGO_BACKUP_LOCATION }}/{{ MONGO_BACKUP_DATE }}.mongo
+    --gzip
   when: mongo_backup_status.stat.exists == False
 
 - name: Compress mongo backup file
