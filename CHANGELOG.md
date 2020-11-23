@@ -241,6 +241,11 @@ Add any new changes to the top(right below this line).
   - Added 'SYSTEM_WIDE_ROLE_CLASSES' for use of edx-rbac roles in the jwt in the lms
 
 - Open edX
+  - The wrong version of xqueue was being installed, fixed.
+
+- Use Ansible 2.3.1.0 so that we can do shallow clones of tags.
+
+- Open edX
   - Renamed edx_sandbox.yml to openedx_native.yml
 
 - Role: ecomworker

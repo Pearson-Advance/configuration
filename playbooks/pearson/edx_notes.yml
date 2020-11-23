@@ -16,7 +16,7 @@
   roles:
     - role: nginx
       nginx_sites:
-      - edx_notes_api
+        - edx_notes_api
     - role: edx_notes_api
       tags:
         - deploy_edx_notes_api

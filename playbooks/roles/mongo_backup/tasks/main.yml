@@ -12,6 +12,11 @@
     path: "{{ MONGO_BACKUP_LOCATION }}"
     state: directory
 
+- name: Clean backup directory
+  file:
+    path: "{{ MONGO_BACKUP_LOCATION }}"
+    state: absent
+
 - name: Check if current mongo backup already exists
   stat:
     path: "{{ MONGO_BACKUP_LOCATION }}/{{ MONGO_BACKUP_DATE }}_mongo.tar.gz"
@@ -24,11 +29,12 @@
     mongodump
     --authenticationDatabase admin
     -u admin -p '{{ MONGO_ADMIN_PASSWORD }}'
-    -o {{ MONGO_BACKUP_LOCATION }}/{{ MONGO_BACKUP_DATE }}.mongo
+    -o {{ MONGO_BACKUP_LOCATION }}/{{ MONGO_BACKUP_DATE }}.mongo.gz
+    --gzip
   when: mongo_backup_status.stat.exists == False
 
 - name: Compress mongo backup file
-  command: "tar -czf {{ MONGO_BACKUP_DATE }}_mongo.tar.gz {{ MONGO_BACKUP_LOCATION}}/{{ MONGO_BACKUP_DATE }}.mongo --remove-files"
+  command: "tar -czf {{ MONGO_BACKUP_DATE }}_mongo.tar.gz {{ MONGO_BACKUP_LOCATION}}/{{ MONGO_BACKUP_DATE }}.mongo.gz --remove-files"
   args:
     chdir: "{{ MONGO_BACKUP_LOCATION}}"
   when: mongo_backup_status.stat.exists == False
