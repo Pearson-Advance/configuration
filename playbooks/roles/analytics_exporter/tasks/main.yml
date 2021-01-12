@@ -49,10 +49,10 @@
   tags:
     - install:configuration
 
-- name: install github_requirements
+- name: install edx-analytics-exporter requirements
   shell: >
     chdir="{{ ANALYTICS_EXPORTER_FOLDER }}"
-    {{ ANALYTICS_EXPORTER_PYTHON_PATH }}pip install -r github_requirements.txt
+    {{ ANALYTICS_EXPORTER_PYTHON_PATH }}pip install -r requirements/base.txt
   become_user: edxapp
   tags:
     - install:requirements
