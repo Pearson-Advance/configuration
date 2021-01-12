@@ -1,7 +1,7 @@
 ---
 
 ANALYTICS_EXPORTER_ENV: prod
-ANALYTICS_EXPORTER_REPO: https://github.com/proversity-org/edx-analytics-exporter.git
+ANALYTICS_EXPORTER_REPO: https://github.com/Pearson-Advance/edx-analytics-exporter.git
 ANALYTICS_EXPORTER_VERSION: "master"
 ANALYTICS_EXPORTER_DEST: /edx/src/
 ANALYTICS_EXPORTER_FOLDER: "{{ ANALYTICS_EXPORTER_DEST }}edx-analytics-exporter"
