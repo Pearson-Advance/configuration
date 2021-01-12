@@ -10,10 +10,10 @@ defaults:
   pipeline_bucket: proversity-pearson-prod
   output_prefix: 'edx-analytics-exporter/'
   se_bucket: the-stack-exchange-bucket
-  django_admin: '/edx/app/edxapp/venvs/edxapp/lib/python2.7/site-packages/django/bin/django-admin.py'
+  django_admin: '/edx/app/edxapp/venvs/edxapp/bin/django-admin.py'
   django_pythonpath: '/edx/app/edxapp/venvs/edxapp/bin/python'
-  django_settings: lms.envs.aws
-  django_cms_settings: cms.envs.aws
+  django_settings: lms.envs.production
+  django_cms_settings: cms.envs.production
   django_database: the_django_database
   mongo_collection: modulestore
   sql_user: {{ MYSQL_LOGIN_USER }}
@@ -33,8 +33,11 @@ environments:
     mongo_db: {{ EDXAPP_MONGO_DB_NAME }}
     mongo_user: {{ EDXAPP_MONGO_USER}}
     mongo_password: {{ EDXAPP_MONGO_PASSWORD }}
+    mongo_auth_db: edxapp
     name: prod-mongodb
     sql_host: {{ PEARSON_MYSQL_HOST }}
+    lms_config: /edx/etc/lms.yml
+    studio_config: /edx/etc/studio.yml
   edge:
     django_config: /edge/django/config
     mongo_host: 0.0.0.0:8888
