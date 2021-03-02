@@ -1,0 +1,56 @@
+# Sample configuration for exporting data for all orgs from Jenkins.
+
+defaults:
+  auth_file: /path/to/the/auth/file
+  gpg_master_key: the-master-key@example.com
+  gpg_keys: gpg-keys
+  work_dir: {{ ANALYTICS_EXPORTER_WORK_DIR }}
+  external_prefix: 'edx-analytics-exporter'
+  output_bucket: {{ EDXAPP_AWS_STORAGE_BUCKET_NAME }}
+  pipeline_bucket: {{ EDXAPP_AWS_STORAGE_BUCKET_NAME }}
+  output_prefix: 'edx-analytics-exporter/'
+  se_bucket: the-stack-exchange-bucket
+  django_admin: '/edx/app/edxapp/venvs/edxapp/bin/django-admin.py'
+  django_pythonpath: '/edx/app/edxapp/venvs/edxapp/bin/python'
+  django_settings: lms.envs.production
+  django_cms_settings: cms.envs.production
+  django_database: the_django_database
+  mongo_collection: modulestore
+  secret_key: ''
+  monitor: false
+  graphite_host: localhost
+  graphite_port: 8125
+  graphite_prefix: edx.analytics.research
+  bucket: {{ EDXAPP_AWS_STORAGE_BUCKET_NAME }}
+  sql_host: {{ PEARSON_MYSQL_HOST }}
+  sql_user: {{ MYSQL_LOGIN_USER }}
+  sql_db: {{ EDXAPP_MYSQL_DB_NAME }}
+  sql_password: {{ MYSQL_LOGIN_PASS }}
+  mongo_host: {{ PEARSON_MONGO_HOST[0] }}
+  mongo_db: {{ EDXAPP_MONGO_DB_NAME }}
+  mongo_user: {{ EDXAPP_MONGO_USER}}
+  mongo_password: {{ EDXAPP_MONGO_PASSWORD }}
+  mongo_auth_db: {{ EDXAPP_MONGO_DB_NAME }}
+
+environments:
+  prod:
+    django_config: /edx/app/edxapp/
+    name: production
+    lms_config: /edx/etc/lms.yml
+    studio_config: /edx/etc/studio.yml
+
+organizations:
+  app:
+    recipients:
+      - daniel.quiroga@edunext.co
+    courses:
+      - course-v1:APP+PEA066+2019
+    other_names:
+      - APP
+  itp:
+    recipients:
+      - daniel.quiroga@edunext.co
+    courses:
+      - course-v1:ITP+9780136535911+2020
+    other_names:
+      - ITP
