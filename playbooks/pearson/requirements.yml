@@ -3,5 +3,6 @@
   version: v3.0.0
 - name: cloudalchemy.prometheus
   version: 2.2.1
-- name: cloudalchemy.node-exporter
+- src: cloudalchemy.node_exporter
   version: 0.8.0
+  name: cloudalchemy.node-exporter
